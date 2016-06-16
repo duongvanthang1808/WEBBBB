@@ -1,0 +1,20 @@
+﻿@model IEnumerable<baitapCNPM.Models.product>
+
+<div id="product-area" class="container" style="width:100%">
+   
+    <div id="pages" hidden data-id="@ViewBag.Pages"></div>
+    <ul class="list-inline">
+        @foreach (var product in Model)
+        {
+            <li class="thumbnail">
+                <div>
+                    <a href="/Shop/Detail/@product.productID"><img class="img-responsive img-thumbnail" data-id="@Url.Content(product.productImage)" data-toggle="modal" data-target="#img-modal" src="@Url.Content(product.productImage)" alt="@product.productName" title="@product.productName" /></a>
+                    <div class="product-info">
+                        <span class="title text-left">@product.productName<small class="price">(@product.price VNĐ)</small></span>
+                        <button class="view-later btn btn-danger" style="padding:4px;margin-top:10px;" data-id="@product.productID">Xem sau</button>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

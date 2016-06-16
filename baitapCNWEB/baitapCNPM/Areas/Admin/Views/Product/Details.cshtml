@@ -1,0 +1,66 @@
+﻿@model baitapCNPM.Models.product
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Title_change{
+    <title>Details Product</title>
+}
+<h2>Detail</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            @Html.DisplayNameFor(model => model.productName)
+                            @Html.DisplayFor(model => model.productName)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.DisplayNameFor(model => model.price)
+                            @Html.DisplayFor(model => model.price, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.DisplayNameFor(model => model.colors)
+                            @Html.DisplayFor(model => model.colors, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.DisplayNameFor(model => model.categoryID)
+                            @Html.DisplayFor(model => model.categoryID, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.DisplayNameFor(model => model.productImage)
+                            @Html.DisplayFor(model => model.productImage, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.DisplayNameFor(model => model.dateCreated)
+                            @Html.DisplayFor(model => model.dateCreated, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.DisplayNameFor(model => model.status)
+                            @Html.DisplayFor(model => model.status, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.DisplayNameFor(model => model.quanity)
+                            @Html.DisplayFor(model => model.quanity, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.productID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

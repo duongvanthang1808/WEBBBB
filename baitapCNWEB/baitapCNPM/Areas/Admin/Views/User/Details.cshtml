@@ -1,0 +1,68 @@
+﻿@model baitapCNPM.Models.user
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Title_change{
+    <title>Deatils User</title>
+}
+<h2>Detail</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                       @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.userID)
+                        @Html.TextBoxFor(model => model.userID, new { placeholder = "Enter text", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.userID)
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.username)
+                        @Html.TextBoxFor(model => model.username, new { placeholder = "Enter text", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.username)
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.password)
+                        @Html.TextBoxFor(model => model.password, new { placeholder = "Enter text", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.password)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.lineAddress)
+                        @Html.TextBoxFor(model => model.lineAddress, new { placeholder = "Enter text", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.lineAddress)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.phonenumber)
+                        @Html.TextBoxFor(model => model.phonenumber, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.phonenumber)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.name)
+                        @Html.TextBoxFor(model => model.name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.name)
+
+                    </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.role_id)
+                            @Html.TextBoxFor(model => model.role_id, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.role_id)
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

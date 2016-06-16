@@ -1,0 +1,64 @@
+﻿@model PagedList.IPagedList<baitapCNPM.Models.product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Title_change{
+    <title>Product</title>
+}
+<h2>Product</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            CategoryID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            CreateDay
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quanity)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.productID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.productID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.productID })
+            </td>
+        </tr>
+    }
+
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

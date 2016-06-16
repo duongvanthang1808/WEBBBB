@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Fashion Blog</title>
+    <meta charset="UTF-8">
+    <script src="~/Scripts/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/script.js"></script>
+    <link href="~/Content/bootstrap-3.3.6-dist/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/font-awesome-4.6.2/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.nicescroll.min.js"></script>
+    <style>
+        .cart {
+            position: absolute;
+            bottom: 13px;
+            box-shadow: 0 0 0.5px 0px;
+            padding: 5px 30px;
+            font-size: 18px;
+            right: 20px;
+            border-radius: 4px;
+        }
+        .container{
+            padding:0px;
+            margin:0px;
+        }
+        .nav-tabs{
+            border:0px;
+        }
+        @@font-face {
+            font-family: 'Roboto';
+            src: url('../Content/roboto/Roboto-Regular.ttf') format('truetype');
+        }
+    </style>
+</head>
+<body style="font-family:'Roboto',sans-serif">
+    <div>
+        <div class="row" style="margin:0;height:100px">
+            <div class="col-md-6 text-left"><a href="/Home"><img src="~/Content/images/logo.png" style="height:100px;" /></a></div>
+            <div class="col-md-6 text-right" style="height:100%;position:relative"><div class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Your Cart</div></div>
+        </div>
+        @Html.Partial("NavBar")
+    </div>
+    <!-- //banner -->
+    <style>
+        @@media (min-width:768px) {
+            #wrapper {
+                width: 100%;
+                min-width: 1210px;
+            }
+        }
+    </style>
+    <div class="container" id="wrapper" style="min-height:500px;">
+        @RenderBody()
+    </div>
+    @Html.Partial("Footer")
+    <script>
+        $(function () {
+            $("html").niceScroll();
+        })
+        
+    </script>
+</body>
+</html>

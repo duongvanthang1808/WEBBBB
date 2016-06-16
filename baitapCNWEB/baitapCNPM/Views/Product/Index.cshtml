@@ -1,0 +1,95 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using baitapCNPM.Models;
+@{
+    shopDBModel data = new shopDBModel();
+}
+<div class="wapper-product">
+    <div class="banner row">
+        <link href="~/Content/product.css" rel="stylesheet" />
+        <div class="col-md-4 moduleslide1">
+            <div class="slide_main">
+                @foreach (product p in ViewBag.shirts)
+            {
+                    <div class="slide_main_item">
+                        <a href="/Shop/Detail/@p.productID"><img src="@Url.Content(p.productImage)" /></a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-4 moduleslide2">
+            <div class="slide_main">
+                @foreach (product p in ViewBag.pants)
+            {
+                    <div class="slide_main_item">
+                        <a href="/Shop/Detail/@p.productID"><img src="@Url.Content(p.productImage)" /></a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-4 moduleslide3">
+            <div class="slide_main">
+                @foreach (product p in ViewBag.accessories)
+            {
+                    <div class="slide_main_item">
+                        <a href="/Shop/Detail/@p.productID"><img src="@Url.Content(p.productImage)" /></a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div style="height:40px;padding:0px 30%;">
+        <div style="border-bottom:1px solid #ddd;height:100%"></div>
+    </div>
+    <div class="row" id="wrapper-area" style="margin:0;">
+        <div class="col-sm-3" id="left-area">
+            <div style="background-color:#f5f5f5;padding-bottom:50px">
+                <div class="header-product">
+                    <h2><a href="/Shop/Products/@ViewBag.Title">Select Products</a></h2>
+                </div>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="order">Loại:</label>
+                        <select class="form-control" id="kind">
+                            <option data-id="0">Tất cả</option>
+                            @foreach (category cat in data.categories)
+                            {
+                                <option data-id="@cat.categoryID">@cat.categoryName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="order">Sắp xếp theo:</label>
+                        <select class="form-control" id="order">
+                            <option>Mới nhất</option>
+                            <option>Giá giảm dần</option>
+                            <option>Giá tăng dần</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="range">Khoảng giá:</label>
+                        <select class="form-control" id="range">
+                            <option data-id="10000000">Dưới 2 triệu</option>
+                            <option data-id="1000000" selected>Dưới 1 triệu</option>
+                            <option data-id="500000">Dưới 5 trăm</option>
+                            <option data-id="300000">Dưới 3 trăm</option>
+                            <option data-id="200000">Dưới 2 trăm</option>
+                        </select>
+                    </div>
+                </form>
+                <label>Trang sản phẩm:</label>
+                <div id="pagination"></div>
+            </div>
+            <div style="background-color:#f5f5f5;margin-top:40px;">
+
+                <div id="cart"></div>
+                <div id="viewlater"></div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div id="replace"></div>
+        </div>
+    </div>
+    <script src="~/Scripts/product.js"></script>
+</div>

@@ -1,0 +1,103 @@
+﻿@model baitapCNPM.Models.product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Title_change{
+    <title>Create Product</title>
+}
+
+<h2>Create</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Basic Form Elements
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data", role = "form" }))
+                        {
+                            @Html.ValidationSummary(true)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.productID)
+                                @Html.TextBoxFor(model => model.productID, new { placeholder = "Enter text", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.productID)
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.productName)
+                                @Html.TextBoxFor(model => model.productName, new { placeholder = "Enter text", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.productName)
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.price)
+                                @Html.TextBoxFor(model => model.price, new { placeholder = "Enter text", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.price)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.colors)
+                                @Html.TextBoxFor(model => model.colors, new { placeholder = "Enter text", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.colors)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.sizes)
+                                @Html.TextBoxFor(model => model.sizes, null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.sizes)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.productImage)
+                                @Html.TextBoxFor(model => model.productImage, new { type = "file", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.productImage)
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.categoryID)
+                                @Html.DropDownListFor(model => model.categoryID, null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.categoryID)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.dateCreated)
+                                @Html.TextBoxFor(model => model.dateCreated, new { placeholder = "Enter text", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.dateCreated)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.status)
+                                @Html.TextBoxFor(model => model.status, new { placeholder = "Enter text", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.status)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.quanity)
+                                @Html.TextBoxFor(model => model.quanity, new { placeholder = "Enter text", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.quanity)
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Tạo</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
+                        }
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

@@ -1,0 +1,127 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--Banner-->
+<link href="~/Content/responsiveslides.css" rel="stylesheet" />
+<script src="~/Scripts/responsiveslides.min.js"></script>
+<style>
+    .tes {
+        position: absolute;
+        top: 11em;
+        left: 20em;
+    }
+    
+        .tes h2 {
+            font-size: 4em;
+            color: #fa03bb;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .tes p {
+            font-size: 2em;
+            color: #fa03bb;
+            margin: 0.5em;
+            text-align: right;
+        }
+
+        .tes h3 {
+            font-size: 2em;
+            color: #ffffff;
+            margin: 0.5em;
+            /*-- agileits --*/
+            text-align: right;
+        }
+
+        .tes h4 {
+            font-size: 4em;
+            color: #ffffff;
+            margin: 1em 0 0;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+</style>
+<div class="banner">
+    <div class="matter-banner">
+        <div class="slider">
+            <div class="callbacks_container">
+                <ul class="rslides" id="slider">
+                    <li>
+                        <img src="~/Content/images/Banner/1.jpg" alt="">
+                        <div class="tes">
+                            <h2>MEN & WOMEN</h2>
+                            <h3>Shirts & Paints & Accessories</h3>
+                            <h4>UP TO 50%</h4>
+                            <p>Sale off</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="~/Content/images/Banner/3.jpg" alt="">
+                        <div class="tes">
+                            <h2>MEN & WOMEN</h2>
+                            <h3>Shirts & Paints & Accessories</h3>
+                            <h4>UP TO 50%</h4>
+                            <p>Sale off</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="~/Content/images/Banner/2.jpg" alt="">
+                        <div class="tes">
+                            <h2>MEN & WOMEN</h2>
+                            <h3>Shirts & Paints & Accessories</h3>
+                            <h4>UP TO 50%</h4>
+                            <p>Sale off</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<script>
+  $(function() {
+    $(".rslides").responsiveSlides();
+  });
+</script>
+<!--End banner-->
+<!--Content-->
+<div class="container" style="background-color:#333;color:#fff;padding:20px 50px;width:100%" id="about">
+    <div>
+        <h2>About Shop</h2>
+        <ul class="list-unstyled">
+            <li>
+                <h4>Shop's Address</h4> 
+                <p class="info">100 Hoang Quoc Viet, Nghia Tan, Cau Giay, Ha Noi</p>
+            </li>
+            <li>
+                <h4>Phone</h4>
+                <ul>
+                    <li>
+                        Mr.Thang: +841642474811   
+                    </li>
+                    <li>
+                        Mr.Hung : +841656107126
+                    </li>
+                    <li>
+                        Mr.Duoc : +841638004227
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h4>How to buy?</h4>
+                <p>
+                    Visit our <a href="/Product">Product Page</a> to choose the products you want to buy. Add them to your cart 
+                    that you can see on the top of this page. Finally when you finished, check out your cart and select the
+                    provided method to pay and follow the construction
+                </p>
+                <p>
+                    You can also order your products and then come directly to our shop to see them in real, after you can
+                    decide to buy them or not. Our address was written above
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>

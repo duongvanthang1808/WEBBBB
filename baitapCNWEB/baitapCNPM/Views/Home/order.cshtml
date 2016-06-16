@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<baitapCNPM.Models.product_odered>
+           <h2><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; Giỏi hàng của bạn</h2>
+<table class="table  table-bordered">
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Mã sản phẩm</th>
+            <th>Màu sắc</th>
+            <th>Size</th>
+            <th>Sô lượng</th>
+            <th>Xóa khỏi giỏ hàng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var total = 0;
+            WebThoiTrang.Models.shopDBModel data = new WebThoiTrang.Models.shopDBModel();
+        }
+        @foreach (WebThoiTrang.Models.product_odered p in Model)
+        {
+            WebThoiTrang.Models.product product = data.products.Find(p.productID);
+            var x = product.price;
+            var y = p.Quanity;
+            var total1 = x * y;
+            total += (int)total1;
+            <tr id="row-@p.productID">
+                <td><p>@product.productName</p></td>
+                <td><p>@product.price</p></td>
+                <td><p>@product.productID</p></td>
+                <td><p>@p.Color</p></td>
+                <td><p>@p.Size</p></td>
+                <td><p>@p.Quanity</p></td>
+                <td><button class="delete-order btn btn-danger" data-id="@p.productID">Xóa</button></td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="7" class="text-center"><h3>Tổng tiền: @total</h3></td>
+        </tr>
+    </tfoot>
+</table>
+<script>
+    $(function () {
+        $(".delete-order").click(function () {
+            var id = $(this).attr("data-id");
+            if(confirm("Xác nhận xóa sản phẩn"))
+            {
+                $.ajax({
+                    url: "/Shop/deleteOrder",
+                    type: "post",
+                    data: { productID: $(this).attr("data-id") },
+                    success: function (data) {
+                        if (data == "succeed") {
+                            $("#row-"+id).remove();
+                        }
+                        else
+                            alert(data);
+                    }
+                })
+            }
+        })
+    })
+</script>

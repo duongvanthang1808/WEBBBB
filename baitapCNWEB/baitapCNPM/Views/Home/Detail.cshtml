@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model baitapCNPM.Models.product
+
+<ul class="breadcrumb" style="background-color:transparent">
+    <li><a href="/Shop/index">Shop</a></li>
+    <li><a href="/Shop/Products">Products</a></li>
+    <li><a href="/Shop/Detail/@Model.productID">@Model.productName</a></li>
+</ul>
+<link href="~/Content/easyzoom.css" rel="stylesheet" />
+<script src="~/Scripts/easyzoom.js"></script>
+<div class="container row">
+    <div class="col-sm-4">
+        <div class="easyzoom easyzoom easyzoom--overlay is-ready">
+            <a href="@Url.Content(Model.productImage)">
+                <img src="@Url.Content(Model.productImage)" alt="" style="max-height:400px;" />
+            </a>
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div>
+            <h2 style="margin:0">@Model.productName</h2>
+        </div>
+        <div>
+            <p><label>Giá:</label> <span class="bg-danger lead" style="font-size:30px;padding:0 10px;">@Model.price</span></p>
+        </div>
+        @using (Html.BeginForm("addOrder", "Shop", FormMethod.Post, new { id = "form-order" }))
+        {
+            <span data-id="@Model.productID" id="productid" hidden></span>
+            <div>
+                <label>Màu sắc: </label>
+                @Html.DropDownList("Color", Model.ColoursDrop, new { id = "colour" })
+            </div>
+            <div>
+                <label>Kích thước: </label>
+                @Html.DropDownList("Size", Model.SizesDrop, new { id = "size" })
+            </div>
+            <div>
+                <label>Số lượng</label>
+                <input id="quanity" style="width:20px;" value="1" />
+            </div>
+            <div>
+                <input class="btn btn-default" type="submit" value="Thêm vào giỏ hàng" id="addbtn" />
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        
+        $(window).load(function () {
+            $.ajax({
+                url: "/Shop/IsproductExsist",
+                type: "post",
+                data: { id: $("#productid").attr("data-id") },
+                success: function (data) {
+                    if(data==true)
+                    {
+                        $("#addbtn").replaceWith('<input class="btn btn-danger" type="submit" value="Thêm vào giỏ hàng" data-toggle="popover" data-trigger="hover" title="Sản phầm này đã có trong giỏ hàng" data-content="Lựa chọn size khác hoặc màu khác nếu không số lượng trong giỏ hàng sẽ tăng" id="addbtn" />');
+                        $('[data-toggle="popover"]').popover();
+                    }
+                }
+            })
+        })
+        var $easyzoom = $('.easyzoom').easyZoom();
+        // Get an instance API
+        var api = $easyzoom.data('easyZoom');
+        $("#form-order").submit(function (e) {
+            e.preventDefault();
+            var colour = $("#colour").val();
+            var size = $("#size").val();
+            var quanity = parseInt($("#quanity").val());
+            var productID = $("#productid").attr("data-id");
+            $.ajax({
+                url: "/Shop/addOrder",
+                data: { productID: productID, size: size, colour: colour, quanity: quanity },
+                type: "post",
+                success: function () {
+                    $("#addbtn").replaceWith("<a class='btn btn-info'href='/Shop/Order'>Đã thêm vào giỏ hàng của bạn</a>")
+                }
+            })
+        })
+    })
+</script>
